@@ -1,4 +1,7 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:frontend_burns/components/loading.dart';
 import 'package:frontend_burns/exception/file.dart';
 import 'package:frontend_burns/global/burn_image.dart';
 import 'package:frontend_burns/state/prediction_notifier.dart';
@@ -95,111 +98,142 @@ class _ImageUploadSectionState extends State<ImageUploadSection> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsetsGeometry.all(20),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadiusGeometry.circular(10),
-        border: Border.all(),
-      ),
-      child: ValueListenableBuilder(
-        valueListenable: PredictionNotifier.isClassified,
-        builder: (BuildContext context, value, _) {
-          return ValueListenableBuilder(
-            valueListenable: PredictionNotifier.isUploaded,
-            builder: (ctx, isUploaded, _) {
-              return BurnImage.selectedImage == null ||
-                      value == true && isUploaded == false
-                  ? Center(
-                      child: Column(
-                        children: [
-                          Icon(Icons.cloud_upload_outlined, size: 96),
-                          const Text(
-                            "Unggah Gambar Luka Bakar",
-                            style: TextStyle(fontSize: 24),
-                          ),
-                          const SizedBox.square(dimension: 10),
-                          const Text(
-                            "Format: .JPG, JPEG",
-                            style: TextStyle(fontSize: 16),
-                          ),
-                          const SizedBox.square(dimension: 10),
-                          const Text(
-                            "Ukuran Maksimal: 5MB",
-                            style: TextStyle(fontSize: 16),
-                          ),
-                          const SizedBox.square(dimension: 30),
-                          SizedBox(
-                            width: 200,
-                            child: FloatingActionButton(
-                              backgroundColor: Colors.black,
-                              foregroundColor: Colors.white,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Icon(Icons.upload),
-                                  const Text("Pilih Gambar"),
-                                ],
+    return ValueListenableBuilder(
+      valueListenable: PredictionNotifier.isLoading,
+      builder: (context, isLoading, child) {
+        if (isLoading) {
+          return LoadingWidget();
+        }
+        return Container(
+          padding: EdgeInsetsGeometry.all(20),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadiusGeometry.circular(10),
+            border: Border.all(),
+          ),
+          child: ValueListenableBuilder(
+            valueListenable: PredictionNotifier.isClassified,
+            builder: (BuildContext context, value, _) {
+              return ValueListenableBuilder(
+                valueListenable: PredictionNotifier.isUploaded,
+                builder: (ctx, isUploaded, _) {
+                  return BurnImage.selectedImage == null ||
+                          value == true && isUploaded == false
+                      ? Center(
+                          child: Column(
+                            children: [
+                              Icon(Icons.cloud_upload_outlined, size: 96),
+                              const Text(
+                                "Unggah Gambar Luka Bakar",
+                                style: TextStyle(fontSize: 24),
                               ),
-                              onPressed: () {
-                                _showImageSourcePicker(context);
-                              },
-                            ),
-                          ),
-                        ],
-                      ),
-                    )
-                  : Center(
-                      child: Column(
-                        children: [
-                          ClipRRect(
-                            child: Image.memory(
-                              BurnImage.selectedImage!,
-                              height: 200,
-                              width: 200,
-                            ),
-                          ),
-                          const SizedBox.square(dimension: 30),
-                          SizedBox(
-                            width: 200,
-                            child: FloatingActionButton(
-                              backgroundColor: Colors.black,
-                              foregroundColor: Colors.white,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [const Text("Klasifikasi Gambar")],
+                              const SizedBox.square(dimension: 10),
+                              const Text(
+                                "Format: .JPG, JPEG",
+                                style: TextStyle(fontSize: 16),
                               ),
-                              onPressed: () async {
-                                try {
-                                  ImageValidator.validate(
-                                    BurnImage.selectedImage!,
-                                  );
-                                  Predict.predict(BurnImage.selectedImage!);
-                                } on InvalidImageFormatException catch (e) {
-                                  BurnImage.selectedImage = null;
-                                  PredictionNotifier.isUploaded.value = false;
-                                  _showError(context, e.message);
-                                } on ImageTooLargeException catch (e) {
-                                  BurnImage.selectedImage = null;
-                                  PredictionNotifier.isUploaded.value = false;
-                                  _showError(context, e.message);
-                                } catch (e) {
-                                  BurnImage.selectedImage = null;
-                                  PredictionNotifier.isUploaded.value = false;
-                                  _showError(
-                                    context,
-                                    'Terjadi kesalahan saat memproses gambar.',
-                                  );
-                                }
-                              },
-                            ),
+                              const SizedBox.square(dimension: 10),
+                              const Text(
+                                "Ukuran Maksimal: 5MB",
+                                style: TextStyle(fontSize: 16),
+                              ),
+                              const SizedBox.square(dimension: 30),
+                              SizedBox(
+                                width: 200,
+                                child: FloatingActionButton(
+                                  backgroundColor: Colors.black,
+                                  foregroundColor: Colors.white,
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Icon(Icons.upload),
+                                      const Text("Pilih Gambar"),
+                                    ],
+                                  ),
+                                  onPressed: () {
+                                    _showImageSourcePicker(context);
+                                  },
+                                ),
+                              ),
+                            ],
                           ),
-                        ],
-                      ),
-                    );
+                        )
+                      : Center(
+                          child: Column(
+                            children: [
+                              ClipRRect(
+                                child: Image.memory(
+                                  BurnImage.selectedImage!,
+                                  height: 200,
+                                  width: 200,
+                                ),
+                              ),
+                              const SizedBox.square(dimension: 30),
+                              SizedBox(
+                                width: 200,
+                                child: FloatingActionButton(
+                                  backgroundColor: Colors.black,
+                                  foregroundColor: Colors.white,
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      const Text("Klasifikasi Gambar"),
+                                    ],
+                                  ),
+                                  onPressed: () async {
+                                    try {
+                                      ImageValidator.validate(
+                                        BurnImage.selectedImage!,
+                                      );
+
+                                      PredictionNotifier.isLoading.value = true;
+                                      Predict.predict(BurnImage.selectedImage!);
+                                    } on InvalidImageFormatException catch (e) {
+                                      PredictionNotifier.isLoading.value =
+                                          false;
+                                      BurnImage.selectedImage = null;
+                                      PredictionNotifier.isUploaded.value =
+                                          false;
+                                      _showError(context, e.message);
+                                    } on ImageTooLargeException catch (e) {
+                                      PredictionNotifier.isLoading.value =
+                                          false;
+                                      BurnImage.selectedImage = null;
+                                      PredictionNotifier.isUploaded.value =
+                                          false;
+                                      _showError(context, e.message);
+                                    } on TimeoutException catch (e) {
+                                      PredictionNotifier.isLoading.value =
+                                          false;
+                                      BurnImage.selectedImage = null;
+                                      PredictionNotifier.isUploaded.value =
+                                          false;
+                                      _showError(
+                                        context,
+                                        "Server merespon terlalu lama",
+                                      );
+                                    } catch (e) {
+                                      PredictionNotifier.isLoading.value =
+                                          false;
+                                      BurnImage.selectedImage = null;
+                                      PredictionNotifier.isUploaded.value =
+                                          false;
+                                      _showError(
+                                        context,
+                                        'Terjadi kesalahan saat memproses gambar.',
+                                      );
+                                    }
+                                  },
+                                ),
+                              ),
+                            ],
+                          ),
+                        );
+                },
+              );
             },
-          );
-        },
-      ),
+          ),
+        );
+      },
     );
   }
 }

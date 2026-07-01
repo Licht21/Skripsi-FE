@@ -15,7 +15,9 @@ class Predict {
       http.MultipartFile.fromBytes("image", image, filename: "burn.jpg"),
     );
 
-    final streamedResponse = await request.send();
+    final streamedResponse = await request.send().timeout(
+      const Duration(seconds: 10),
+    );
 
     final response = await http.Response.fromStream(streamedResponse);
 
@@ -24,10 +26,11 @@ class Predict {
 
       PredictionNotifier.isClassified.value = true;
       PredictionNotifier.isUploaded.value = false;
+      PredictionNotifier.isLoading.value = false;
       ResultNotifier.degree.value = data['classification'];
       ResultNotifier.confidence.value = data['confidence'];
     } else {
-      return;
+      throw Exception("Server mengembalikan status ${response.statusCode}");
     }
   }
 
