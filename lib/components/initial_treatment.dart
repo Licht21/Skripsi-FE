@@ -87,9 +87,10 @@ class _InitialTreatmentState extends State<InitialTreatment> {
                   final items = Predict.burnsEarlyHandling(
                     ResultNotifier.degree.value!,
                   );
+                  print(value);
+                  print(items);
 
                   int counter = 0;
-                  // print(items);
 
                   return Column(
                     mainAxisSize: MainAxisSize.min,

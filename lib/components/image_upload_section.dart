@@ -186,7 +186,9 @@ class _ImageUploadSectionState extends State<ImageUploadSection> {
                                       );
 
                                       PredictionNotifier.isLoading.value = true;
-                                      Predict.predict(BurnImage.selectedImage!);
+                                      await Predict.predict(
+                                        BurnImage.selectedImage!,
+                                      );
                                     } on InvalidImageFormatException catch (e) {
                                       PredictionNotifier.isLoading.value =
                                           false;
@@ -201,16 +203,11 @@ class _ImageUploadSectionState extends State<ImageUploadSection> {
                                       PredictionNotifier.isUploaded.value =
                                           false;
                                       _showError(context, e.message);
-                                    } on TimeoutException catch (e) {
+                                    } on ImageOODException catch (e) {
                                       PredictionNotifier.isLoading.value =
                                           false;
+                                      _showError(this.context, e.message);
                                       BurnImage.selectedImage = null;
-                                      PredictionNotifier.isUploaded.value =
-                                          false;
-                                      _showError(
-                                        context,
-                                        "Server merespon terlalu lama",
-                                      );
                                     } catch (e) {
                                       PredictionNotifier.isLoading.value =
                                           false;

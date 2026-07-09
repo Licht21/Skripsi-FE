@@ -21,3 +21,15 @@ class ImageTooLargeException implements Exception {
   @override
   String toString() => message;
 }
+
+class ImageOODException implements Exception {
+  final String message;
+
+  const ImageOODException([
+    this.message =
+        'Gambar terindikasi bukan luka bakar. Silahkan ambil ulang gambar',
+  ]);
+
+  @override
+  String toString() => message;
+}

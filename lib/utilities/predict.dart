@@ -1,12 +1,13 @@
 import 'dart:typed_data';
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:frontend_burns/exception/file.dart';
 import 'package:frontend_burns/state/prediction_notifier.dart';
 import 'package:frontend_burns/state/result_notifier.dart';
 import 'package:http/http.dart' as http;
 
 class Predict {
-  static const URL = "http://3.26.104.4:8000/predict";
+  static const URL = "http://32.236.240.152:8000/predict";
 
   static Future<void> predict(Uint8List image) async {
     final request = http.MultipartRequest("POST", Uri.parse(URL));
@@ -15,15 +16,17 @@ class Predict {
       http.MultipartFile.fromBytes("image", image, filename: "burn.jpg"),
     );
 
-    final streamedResponse = await request.send().timeout(
-      const Duration(seconds: 10),
-    );
+    final streamedResponse = await request.send();
 
     final response = await http.Response.fromStream(streamedResponse);
 
-    if (response.statusCode == 200) {
-      final data = jsonDecode(response.body);
+    final data = jsonDecode(response.body);
 
+    if (response.statusCode == 200 && data['classification'] == -1) {
+      ResultNotifier.degree.value = data['classification'];
+      print(ResultNotifier.degree.value);
+      throw ImageOODException();
+    } else if (response.statusCode == 200) {
       PredictionNotifier.isClassified.value = true;
       PredictionNotifier.isUploaded.value = false;
       PredictionNotifier.isLoading.value = false;
