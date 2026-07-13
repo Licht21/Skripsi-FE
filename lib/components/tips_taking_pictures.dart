@@ -8,19 +8,33 @@ class TipsTakingPictures extends StatelessWidget {
     return Expanded(
       flex: 4,
       child: Container(
-        decoration: BoxDecoration(border: Border.all()),
+        decoration: BoxDecoration(
+          border: Border.all(color: Colors.green),
+          borderRadius: BorderRadiusGeometry.circular(10),
+          color: Colors.green.shade50,
+        ),
         padding: EdgeInsetsGeometry.all(10),
         child: Column(
           children: [
             Expanded(
               child: Row(
                 children: [
-                  Expanded(child: Icon(Icons.camera_alt_outlined, size: 32)),
+                  Expanded(
+                    child: Icon(
+                      Icons.camera_alt_outlined,
+                      size: 32,
+                      color: Colors.green.shade800,
+                    ),
+                  ),
                   Expanded(
                     flex: 6,
-                    child: const Text(
+                    child: Text(
                       "Tips Mengambil Gambar",
-                      style: TextStyle(fontSize: 24),
+                      style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.w700,
+                        color: Colors.green.shade800,
+                      ),
                     ),
                   ),
                 ],
@@ -30,7 +44,13 @@ class TipsTakingPictures extends StatelessWidget {
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Expanded(child: Icon(Icons.sunny, size: 32)),
+                  Expanded(
+                    child: Icon(
+                      Icons.sunny,
+                      size: 32,
+                      color: Colors.green.shade800,
+                    ),
+                  ),
                   Expanded(
                     flex: 6,
                     child: Column(
@@ -56,7 +76,11 @@ class TipsTakingPictures extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Expanded(
-                    child: Icon(Icons.center_focus_strong_outlined, size: 32),
+                    child: Icon(
+                      Icons.center_focus_strong_outlined,
+                      size: 32,
+                      color: Colors.green.shade800,
+                    ),
                   ),
                   Expanded(
                     flex: 6,
@@ -83,7 +107,11 @@ class TipsTakingPictures extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Expanded(
-                    child: Icon(Icons.social_distance_rounded, size: 32),
+                    child: Icon(
+                      Icons.social_distance_rounded,
+                      size: 32,
+                      color: Colors.green.shade800,
+                    ),
                   ),
                   Expanded(
                     flex: 6,
@@ -109,7 +137,13 @@ class TipsTakingPictures extends StatelessWidget {
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Expanded(child: Icon(Icons.photo_camera_back, size: 32)),
+                  Expanded(
+                    child: Icon(
+                      Icons.photo_camera_back,
+                      size: 32,
+                      color: Colors.green.shade800,
+                    ),
+                  ),
                   Expanded(
                     flex: 6,
                     child: Column(
@@ -134,7 +168,13 @@ class TipsTakingPictures extends StatelessWidget {
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Expanded(child: Icon(Icons.phone_android, size: 32)),
+                  Expanded(
+                    child: Icon(
+                      Icons.phone_android,
+                      size: 32,
+                      color: Colors.green.shade800,
+                    ),
+                  ),
                   Expanded(
                     flex: 6,
                     child: Column(

@@ -16,20 +16,31 @@ class _InitialTreatmentState extends State<MobileInitialTreatment> {
     return Container(
       padding: EdgeInsetsGeometry.all(10),
       decoration: BoxDecoration(
-        border: Border.all(),
+        border: Border.all(color: Colors.orange),
         borderRadius: BorderRadiusGeometry.circular(10),
+        color: Colors.orange.shade100,
       ),
       child: Column(
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Flexible(child: Icon(Icons.shield_outlined, size: 36)),
+              Flexible(
+                child: Icon(
+                  Icons.shield_outlined,
+                  size: 36,
+                  color: Colors.deepOrangeAccent,
+                ),
+              ),
               const SizedBox.square(dimension: 10),
               Expanded(
                 child: const Text(
                   "Saran Penanganan Awal",
-                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.w700),
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.w700,
+                    color: Colors.deepOrangeAccent,
+                  ),
                 ),
               ),
             ],
@@ -48,7 +59,7 @@ class _InitialTreatmentState extends State<MobileInitialTreatment> {
                         Icon(
                           Icons.health_and_safety_outlined,
                           size: 70,
-                          color: Colors.grey,
+                          color: Colors.deepOrange,
                         ),
                         SizedBox(height: 20),
                         Text(

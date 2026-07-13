@@ -20,8 +20,9 @@ class _DetailClassificationResultState
       child: Container(
         padding: EdgeInsetsGeometry.all(20),
         decoration: BoxDecoration(
-          border: Border.all(),
+          border: Border.all(color: Colors.orangeAccent),
           borderRadius: BorderRadiusGeometry.circular(10),
+          color: Colors.yellow.shade50,
         ),
         child: ValueListenableBuilder(
           valueListenable: PredictionNotifier.isClassified,
@@ -152,7 +153,7 @@ class _DetailClassificationResultState
                           Icon(
                             Icons.analytics_outlined,
                             size: 70,
-                            color: Colors.grey,
+                            color: Colors.orangeAccent,
                           ),
                           SizedBox(height: 20),
                           Text(

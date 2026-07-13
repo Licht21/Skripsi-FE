@@ -10,8 +10,9 @@ class SystemClassification extends StatelessWidget {
       flex: 4,
       child: Container(
         decoration: BoxDecoration(
-          border: Border.all(),
+          border: Border.all(color: Colors.blueAccent),
           borderRadius: BorderRadiusGeometry.circular(10),
+          color: Colors.blueAccent.shade700,
         ),
         padding: EdgeInsetsGeometry.all(25),
         child: Row(
@@ -26,6 +27,7 @@ class SystemClassification extends StatelessWidget {
                       style: TextStyle(
                         fontWeight: FontWeight.w700,
                         fontSize: 32,
+                        color: Colors.white,
                       ),
                     ),
                   ),
@@ -36,6 +38,7 @@ class SystemClassification extends StatelessWidget {
                       style: TextStyle(
                         fontWeight: FontWeight.w300,
                         fontSize: 16,
+                        color: Colors.white,
                       ),
                     ),
                   ),
@@ -46,12 +49,17 @@ class SystemClassification extends StatelessWidget {
                       style: TextStyle(
                         fontWeight: FontWeight.w300,
                         fontSize: 16,
+                        color: Colors.white,
                       ),
                     ),
                   ),
                   Expanded(
                     child: Center(
-                      child: Icon(Icons.medical_services_outlined, size: 96),
+                      child: Icon(
+                        Icons.medical_services_outlined,
+                        size: 96,
+                        color: Colors.white,
+                      ),
                     ),
                   ),
                 ],

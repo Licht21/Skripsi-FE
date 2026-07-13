@@ -8,7 +8,9 @@ class MobileSystemClassification extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
+        border: Border.all(color: Colors.blueAccent),
         borderRadius: BorderRadiusGeometry.circular(10),
+        color: Colors.blueAccent.shade700,
       ),
       padding: EdgeInsetsGeometry.all(25),
       child: Column(
@@ -18,19 +20,37 @@ class MobileSystemClassification extends StatelessWidget {
             children: [
               Text(
                 "Klasifikasi Luka Bakar",
-                style: TextStyle(fontWeight: FontWeight.w700, fontSize: 32),
+                style: TextStyle(
+                  fontWeight: FontWeight.w700,
+                  fontSize: 32,
+                  color: Colors.white,
+                ),
               ),
               const SizedBox.square(dimension: 20),
               Text(
                 "Sistem ini menggunakan model deep learning MobileNetV2 untuk mengklasifikasi derajat luka bakar",
-                style: TextStyle(fontWeight: FontWeight.w300, fontSize: 16),
+                style: TextStyle(
+                  fontWeight: FontWeight.w300,
+                  fontSize: 16,
+                  color: Colors.white,
+                ),
               ),
               const SizedBox.square(dimension: 20),
               Text(
                 "Unggah citra luka bakar untuk mendapatkan hasil klasifikasi",
-                style: TextStyle(fontWeight: FontWeight.w300, fontSize: 16),
+                style: TextStyle(
+                  fontWeight: FontWeight.w300,
+                  fontSize: 16,
+                  color: Colors.white,
+                ),
               ),
-              Center(child: Icon(Icons.medical_services_outlined, size: 96)),
+              Center(
+                child: Icon(
+                  Icons.medical_services_outlined,
+                  size: 96,
+                  color: Colors.white,
+                ),
+              ),
             ],
           ),
         ],

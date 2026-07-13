@@ -9,7 +9,7 @@ class InstructionForUse extends StatelessWidget {
       flex: 4,
       child: Container(
         decoration: BoxDecoration(
-          border: Border.all(),
+          border: Border.all(color: Colors.green),
           borderRadius: BorderRadiusGeometry.circular(10),
         ),
         padding: EdgeInsetsGeometry.all(25),
@@ -36,14 +36,22 @@ class InstructionForUse extends StatelessWidget {
                 children: [
                   Container(
                     decoration: BoxDecoration(
-                      border: Border.all(),
+                      border: Border.all(color: Colors.green),
                       borderRadius: BorderRadiusGeometry.circular(10),
+                      color: Colors.green,
                     ),
                     padding: EdgeInsetsGeometry.symmetric(
                       horizontal: 10,
                       vertical: 5,
                     ),
-                    child: Text("1", style: TextStyle(fontSize: 16)),
+                    child: Text(
+                      "1",
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w900,
+                        color: Colors.white,
+                      ),
+                    ),
                   ),
                   const SizedBox.square(dimension: 20),
                   Expanded(
@@ -61,14 +69,22 @@ class InstructionForUse extends StatelessWidget {
                 children: [
                   Container(
                     decoration: BoxDecoration(
-                      border: Border.all(),
+                      border: Border.all(color: Colors.green),
                       borderRadius: BorderRadiusGeometry.circular(10),
+                      color: Colors.green,
                     ),
                     padding: EdgeInsetsGeometry.symmetric(
                       horizontal: 10,
                       vertical: 5,
                     ),
-                    child: Text("2", style: TextStyle(fontSize: 16)),
+                    child: Text(
+                      "2",
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w900,
+                        color: Colors.white,
+                      ),
+                    ),
                   ),
                   const SizedBox.square(dimension: 20),
                   Expanded(
@@ -86,14 +102,22 @@ class InstructionForUse extends StatelessWidget {
                 children: [
                   Container(
                     decoration: BoxDecoration(
-                      border: Border.all(),
+                      border: Border.all(color: Colors.green),
                       borderRadius: BorderRadiusGeometry.circular(10),
+                      color: Colors.green,
                     ),
                     padding: EdgeInsetsGeometry.symmetric(
                       horizontal: 10,
                       vertical: 5,
                     ),
-                    child: Text("3", style: TextStyle(fontSize: 16)),
+                    child: Text(
+                      "3",
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w900,
+                        color: Colors.white,
+                      ),
+                    ),
                   ),
                   const SizedBox.square(dimension: 20),
                   Expanded(
@@ -111,14 +135,22 @@ class InstructionForUse extends StatelessWidget {
                 children: [
                   Container(
                     decoration: BoxDecoration(
-                      border: Border.all(),
+                      border: Border.all(color: Colors.green),
                       borderRadius: BorderRadiusGeometry.circular(10),
+                      color: Colors.green,
                     ),
                     padding: EdgeInsetsGeometry.symmetric(
                       horizontal: 10,
                       vertical: 5,
                     ),
-                    child: Text("4", style: TextStyle(fontSize: 16)),
+                    child: Text(
+                      "4",
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w900,
+                        color: Colors.white,
+                      ),
+                    ),
                   ),
                   const SizedBox.square(dimension: 20),
                   Expanded(

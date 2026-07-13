@@ -80,19 +80,106 @@ class _ImageUploadSectionState extends State<ImageUploadSection> {
   }
 
   void _showError(BuildContext context, String message) {
-    showDialog(
+    showGeneralDialog(
       context: context,
-      builder: (_) => AlertDialog(
-        icon: const Icon(Icons.error_outline, size: 40),
-        title: const Text('Unggah Gambar Gagal'),
-        content: Text(message),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: const Text('OK'),
+      barrierDismissible: true,
+      barrierLabel: '',
+      barrierColor: Colors.black54, // Efek gelap transparan pada latar belakang
+      transitionDuration: const Duration(milliseconds: 200),
+      pageBuilder: (ctx, anim1, anim2) => const SizedBox.shrink(),
+      transitionBuilder: (ctx, anim, anim2, child) {
+        return Transform.scale(
+          scale: anim.value,
+          child: FadeTransition(
+            opacity: anim,
+            child: AlertDialog(
+              backgroundColor: Colors.white,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(
+                  16,
+                ), // Sudut melengkung modern
+              ),
+              insetPadding: const EdgeInsets.symmetric(
+                horizontal: 24,
+                vertical: 24,
+              ),
+              contentPadding: const EdgeInsets.fromLTRB(24, 24, 24, 16),
+              content: Column(
+                mainAxisSize: MainAxisSize.min, // Agar dialog pas dengan konten
+                children: [
+                  // Container Icon Error yang Lebih Estetik
+                  Container(
+                    padding: const EdgeInsets.all(16),
+                    decoration: BoxDecoration(
+                      color: Colors.red.shade50,
+                      shape: BoxShape.circle,
+                    ),
+                    child: Icon(
+                      Icons.error_outline_rounded,
+                      size: 48,
+                      color: Colors.red.shade600,
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+
+                  // Judul Dialog
+                  const Text(
+                    'Unggah Gambar Gagal',
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Color(0xFF1E1E1E),
+                      fontFamily:
+                          'Roboto', // Sesuaikan dengan font aplikasi Anda
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(height: 12),
+
+                  // Isi Pesan Error
+                  Text(
+                    message,
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: Colors.grey.shade600,
+                      height: 1.4,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(height: 24),
+
+                  // Tombol Aksi Kustom (Lebih Menarik dibanding TextButton Biasa)
+                  SizedBox(
+                    width: double.infinity, // Tombol memenuhi lebar dialog
+                    height: 44,
+                    child: ElevatedButton(
+                      onPressed: () => Navigator.pop(context),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(
+                          0xFF2196F3,
+                        ), // Warna biru tema utama aplikasi Anda
+                        foregroundColor: Colors.white,
+                        elevation: 0,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                      ),
+                      child: const Text(
+                        'OK',
+                        style: TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.w600,
+                          letterSpacing: 0.5,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ),
-        ],
-      ),
+        );
+      },
     );
   }
 
@@ -108,7 +195,8 @@ class _ImageUploadSectionState extends State<ImageUploadSection> {
           padding: EdgeInsetsGeometry.all(20),
           decoration: BoxDecoration(
             borderRadius: BorderRadiusGeometry.circular(10),
-            border: Border.all(),
+            border: Border.all(color: Colors.white),
+            color: Colors.white,
           ),
           child: ValueListenableBuilder(
             valueListenable: PredictionNotifier.isClassified,

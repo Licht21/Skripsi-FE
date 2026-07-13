@@ -18,8 +18,9 @@ class _InitialTreatmentState extends State<InitialTreatment> {
       child: Container(
         padding: EdgeInsetsGeometry.all(10),
         decoration: BoxDecoration(
-          border: Border.all(),
+          border: Border.all(color: Colors.orange),
           borderRadius: BorderRadiusGeometry.circular(10),
+          color: Colors.orange.shade100,
         ),
         child: Column(
           children: [
@@ -27,7 +28,13 @@ class _InitialTreatmentState extends State<InitialTreatment> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Flexible(child: Icon(Icons.shield_outlined, size: 36)),
+                  Flexible(
+                    child: Icon(
+                      Icons.shield_outlined,
+                      size: 36,
+                      color: Colors.deepOrangeAccent,
+                    ),
+                  ),
                   const SizedBox.square(dimension: 10),
                   Expanded(
                     child: const Text(
@@ -35,6 +42,7 @@ class _InitialTreatmentState extends State<InitialTreatment> {
                       style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.w700,
+                        color: Colors.deepOrangeAccent,
                       ),
                     ),
                   ),
@@ -56,8 +64,8 @@ class _InitialTreatmentState extends State<InitialTreatment> {
                           children: [
                             Icon(
                               Icons.health_and_safety_outlined,
-                              size: 70,
-                              color: Colors.grey,
+                              size: 100,
+                              color: Colors.deepOrange,
                             ),
                             SizedBox(height: 20),
                             Text(

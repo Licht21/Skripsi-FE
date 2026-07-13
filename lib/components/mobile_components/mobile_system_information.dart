@@ -9,8 +9,9 @@ class SystemInformation extends StatelessWidget {
       flex: 2,
       child: Container(
         decoration: BoxDecoration(
-          border: Border.all(),
+          border: Border.all(color: Colors.blue),
           borderRadius: BorderRadiusGeometry.circular(10),
+          color: Colors.lightBlue.shade50,
         ),
         padding: EdgeInsetsGeometry.all(20),
         child: Column(

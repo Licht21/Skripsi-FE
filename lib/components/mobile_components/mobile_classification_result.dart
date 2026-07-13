@@ -31,7 +31,11 @@ class _ClassificationResultState extends State<MobileClassificationResult> {
               Expanded(
                 child: const Text(
                   "Hasil Klasifikasi",
-                  style: TextStyle(fontWeight: FontWeight.w700, fontSize: 24),
+                  style: TextStyle(
+                    fontWeight: FontWeight.w700,
+                    fontSize: 24,
+                    color: Colors.deepPurple,
+                  ),
                 ),
               ),
             ],
@@ -40,15 +44,20 @@ class _ClassificationResultState extends State<MobileClassificationResult> {
           Container(
             padding: EdgeInsetsGeometry.all(10),
             decoration: BoxDecoration(
-              border: BoxBorder.all(),
+              border: BoxBorder.all(color: Colors.purple.shade700),
               borderRadius: BorderRadiusGeometry.circular(10),
+              color: Colors.purple.shade50,
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const Text(
                   "Gambar Yang Diunggah",
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w700,
+                    color: Colors.deepPurple,
+                  ),
                 ),
                 const SizedBox.square(dimension: 10),
                 ValueListenableBuilder(
@@ -68,7 +77,13 @@ class _ClassificationResultState extends State<MobileClassificationResult> {
                               ),
                             ],
                           )
-                        : Center(child: Icon(Icons.image_outlined, size: 200));
+                        : Center(
+                            child: Icon(
+                              Icons.image_outlined,
+                              size: 200,
+                              color: Colors.deepPurple,
+                            ),
+                          );
                   },
                 ),
               ],

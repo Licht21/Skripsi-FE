@@ -9,8 +9,9 @@ class SystemInformation extends StatelessWidget {
       flex: 2,
       child: Container(
         decoration: BoxDecoration(
-          border: Border.all(),
+          border: Border.all(color: Colors.blue),
           borderRadius: BorderRadiusGeometry.circular(10),
+          color: Colors.lightBlue.shade50,
         ),
         padding: EdgeInsetsGeometry.all(20),
         child: Column(
@@ -18,12 +19,16 @@ class SystemInformation extends StatelessWidget {
             Expanded(
               child: Row(
                 children: [
-                  Icon(Icons.info_outline, size: 24),
+                  Icon(Icons.info_outline, size: 32, color: Colors.blue),
                   const SizedBox.square(dimension: 10),
                   Expanded(
                     child: Text(
                       "Informasi Sistem",
-                      style: TextStyle(fontSize: 24),
+                      style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.w700,
+                        color: Colors.blueAccent.shade700,
+                      ),
                     ),
                   ),
                 ],
