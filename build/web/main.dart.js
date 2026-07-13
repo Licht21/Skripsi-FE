@@ -22015,7 +22015,7 @@ if(s<4)return!1
 return a[0]===255&&a[1]===216&&a[s-2]===255&&a[s-1]===217},
 vz(a){var s=0,r=A.Q(t.H),q,p,o,n,m,l
 var $async$vz=A.M(function(b,c){if(b===1)return A.N(c,r)
-for(;;)switch(s){case 0:o=A.asH("POST",A.fM("http://localhost:8000/predict"))
+for(;;)switch(s){case 0:o=A.asH("POST",A.fM("http://32.236.240.152:8000/predict"))
 n=t.zb
 m=new A.ig(null,null,null,null,n)
 m.jn(a)
