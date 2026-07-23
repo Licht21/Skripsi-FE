@@ -7,7 +7,8 @@ import 'package:frontend_burns/state/result_notifier.dart';
 import 'package:http/http.dart' as http;
 
 class Predict {
-  static const URL = "http://32.236.240.152:8000/predict";
+  static const URL =
+      "http://ec2-32-236-240-152.ap-southeast-2.compute.amazonaws.com:8000/predict";
 
   static Future<void> predict(Uint8List image) async {
     final request = http.MultipartRequest("POST", Uri.parse(URL));
